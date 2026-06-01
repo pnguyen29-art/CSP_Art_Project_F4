@@ -1,5 +1,32 @@
 import simple_graphics as sg
 
+def draw_house(x, y, color):
+    """
+    Draws a parameterized house with a base, roof, and door using public sg commands.
+    """
+    # 1. House Base
+    sg.set_outline_color("black")
+    sg.set_fill_color(color)
+    sg.fill_rectangle(x, y, 160, 80)
+    
+    # 2. House Roof
+    sg.set_fill_color("brown")
+    # fill_triangle takes x1, y1, x2, y2, x3, y3
+    sg.fill_triangle(x - 20, y, x + 80, y - 60, x + 180, y)
+    
+    # 3. House Door
+    sg.set_fill_color("brown")
+    sg.fill_rectangle(x + 60, y + 20, 40, 60)
+
+def draw_bird(x, y, color):
+    """
+    Draws a simple V-shaped bird flying in the sky using public sg commands.
+    """
+    sg.set_outline_color(color)
+    # The original was one connected line; here we use two separate lines for the V-shape
+    sg.draw_line(x - 15, y - 8, x, y)
+    sg.draw_line(x, y, x + 15, y - 8)
+    
 #cloud
 def draw_cloud(x, y):
     sg.set_outline_color("white")
@@ -196,6 +223,9 @@ def draw_picture(width, height):
     draw_flower(60,360)
     draw_flower(300,350)
 
+    draw_house(240, 200, "pink")
+    
+    draw_bird(220, 80, "white")
 if __name__ == "__main__":
     # Launch the wrapper; only edit starting dimensions of canvas if you would like to
     sg.start(draw_picture, 600, 400)
