@@ -15,17 +15,19 @@ def draw_cloud(x, y):
     
 def draw_picture(width, height):
     """Draws a static picture."""
-    
-    # Fill the background
-    sg.fill_background("white")
+
     
     # make some variables available
     colors = ["red", "green", "blue", "cyan", "magenta", "yellow"]
+    
+    #Ground
     sg.set_outline_color("green")
     sg.set_fill_color ("green")
     sg.fill_rectangle(0, 280,600, 400)
     sg.set_fill_color("cyan")
     sg.fill_rectangle(0, 0, 600, 280)
+    
+    #Lake
     sg.set_fill_color("blue")
     sg.set_outline_color("blue")
     sg.fill_rectangle(450, 280,100, 25)
@@ -34,15 +36,36 @@ def draw_picture(width, height):
     sg.fill_rectangle(375, 340,100, 25)
     sg.fill_rectangle(350, 360,100, 25)
     sg.fill_rectangle(325, 380,100, 25)
+    
+    #clouds
     draw_cloud(120,70)
     draw_cloud(320,65)
+    
+    #House (Base)
     sg.set_outline_color("black")
     sg.set_fill_color ("pink")
     sg.fill_rectangle(240, 200,160, 80)
+    
+    #House (Roof)
     sg.set_outline_color("black")
     sg.set_fill_color("brown")
     sg.fill_triangle (220,200,320,140,420,200)
-
+    sg.set_outline_color("brown")
+    
+    #House (Door)
+    sg.set_fill_color("brown")
+    sg.fill_rectangle(300, 220, 40, 60)
+    
+    #Tree
+    sg.set_fill_color ("brown")
+    sg.fill_rectangle(75, 180, 25, 100)
+    sg.set_fill_color ("green")
+    sg.set_outline_color("green")
+    sg.fill_rectangle (38, 100, 100, 100)
+    
+    #Sun
+    sg.set_fill_color ("yellow")
+    sg.fill_circle(600, 0, 100)
 
 if __name__ == "__main__":
     # Launch the wrapper; only edit starting dimensions of canvas if you would like to
