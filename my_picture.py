@@ -13,6 +13,20 @@ def draw_cloud(x, y):
     sg.fill_arc(x+40,y-20,40,40,270,180)
     sg.fill_arc(x+20,y-40,40,40,90,-90)
     sg.fill_arc(x+20,y,40,40,0,-90)
+
+def draw_flower(x,y):
+    sg.set_outline_color("#77FF57")
+    sg.set_fill_color("#77FF57")
+    sg.fill_rectangle(x-1,y,2,20)
+    sg.set_outline_color("white")
+    sg.set_fill_color("white")
+    sg.fill_circle(x+5,y+5,5)
+    sg.fill_circle(x+5,y-5,5)
+    sg.fill_circle(x-5,y+5,5)
+    sg.fill_circle(x-5,y-5,5)
+    sg.set_outline_color("yellow")
+    sg.set_fill_color("yellow")
+    sg.fill_circle(x,y,5)
     
 #Person
 def draw_blocky_person(x, y, height, color):
@@ -174,6 +188,13 @@ def draw_picture(width, height):
     #Dog
     draw_blocky_dog(150, 250, 30, "grey")
     draw_blocky_dog(380, 250, 30, "white")
+
+    #Flower
+    draw_flower(200,340)
+    draw_flower(50,300)
+    draw_flower(120,320)
+    draw_flower(60,360)
+    draw_flower(300,350)
 
 if __name__ == "__main__":
     # Launch the wrapper; only edit starting dimensions of canvas if you would like to
