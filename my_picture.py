@@ -1,5 +1,6 @@
 import simple_graphics as sg
 
+#cloud
 def draw_cloud(x, y):
     sg.set_outline_color("white")
     sg.set_fill_color("white")
@@ -13,6 +14,105 @@ def draw_cloud(x, y):
     sg.fill_arc(x+20,y-40,40,40,90,-90)
     sg.fill_arc(x+20,y,40,40,0,-90)
     
+#Person
+def draw_blocky_person(x, y, height, color):
+    """
+    Draws a simple blocky 2D person.
+    x, y: The top-left corner of where the person should start.
+    height: The total height of the person.
+    color: The main color of the person's clothes/body.
+    """
+    # Scale everything cleanly based on the total height
+    unit = height / 10  # Break the height into 10 block units
+    
+    head_size = unit * 2
+    body_w = unit * 3
+    body_h = unit * 4
+    limb_w = unit * 0.8
+    limb_h = unit * 4
+    
+    # 1. Draw the Head
+    sg.set_fill_color("#ffcc99") # Skin tone block
+    sg.set_outline_color("black")
+    sg.set_line_thickness(2)
+    sg.fill_rectangle(x + unit, y, head_size, head_size)
+    
+    # 2. Draw the Body (Torso)
+    sg.set_fill_color(color)
+    sg.fill_rectangle(x + unit * 0.5, y + head_size, body_w, body_h)
+    
+    # 3. Draw the Legs
+    # Left Leg
+    sg.fill_rectangle(x + unit * 0.7, y + head_size + body_h, limb_w, limb_h)
+    # Right Leg
+    sg.fill_rectangle(x + unit * 2.5, y + head_size + body_h, limb_w, limb_h)
+    
+    # 4. Draw the Arms
+    # Left Arm
+    sg.fill_rectangle(x - unit * 0.5, y + head_size, limb_w, body_h)
+    # Right Arm
+    sg.fill_rectangle(x + unit * 3.7, y + head_size, limb_w, body_h)
+ 
+#Dog
+def draw_blocky_dog(x, y, height, color):
+    """
+    Draws a simple blocky 2D dog looking to the right.
+    x, y: The top-left corner of where the dog should start (the head/ears area).
+    height: The total height of the dog from paws to the top of its head.
+    color: The main color of the dog's fur.
+    """
+    # Scale everything based on the total height (10 block units)
+    unit = height / 10
+    
+    # Dimensions
+    head_w = unit * 3
+    head_h = unit * 2
+    snout_w = unit * 1.5
+    snout_h = unit * 1
+    ear_w = unit * 1
+    ear_h = unit * 1.5
+    body_w = unit * 5
+    body_h = unit * 3.5
+    leg_w = unit * 1
+    leg_h = unit * 4.5
+    tail_w = unit * 1.5
+    tail_h = unit * 0.8
+    
+    # 1. Setup global outlines and line thickness
+    sg.set_outline_color("black")
+    sg.set_line_thickness(2)
+    
+    # 2. Draw Ears (attached to back of the head)
+    sg.set_fill_color("black") # contrasting color for ears
+    sg.fill_rectangle(x, y + unit * 0.5, ear_w, ear_h)
+    
+    # 3. Draw Head
+    sg.set_fill_color(color)
+    sg.fill_rectangle(x + unit * 0.5, y + unit, head_w, head_h)
+    
+    # 4. Draw Snout/Muzzle (extends to the right)
+    sg.fill_rectangle(x + unit * 0.5 + head_w, y + unit + (head_h - snout_h), snout_w, snout_h)
+    
+    # 5. Draw Eye & Nose
+    sg.set_fill_color("white")
+    sg.fill_rectangle(x + unit * 2.2, y + unit * 1.3, unit * 0.5, unit * 0.5) # Eye
+    sg.set_fill_color("black")
+    sg.fill_rectangle(x + unit * 2.4, y + unit * 1.5, unit * 0.3, unit * 0.3) # Pupil
+    sg.fill_rectangle(x + unit * 0.5 + head_w + snout_w - (unit * 0.5), y + unit + (head_h - snout_h), unit * 0.5, unit * 0.4) # Nose
+    
+    # 6. Draw Body (behind and below the head)
+    sg.set_fill_color(color)
+    sg.fill_rectangle(x + unit * 0.5, y + unit + head_h, body_w, body_h)
+    
+    # 7. Draw Legs
+    # Back Leg (Left side)
+    sg.fill_rectangle(x + unit * 1, y + unit + head_h + body_h, leg_w, leg_h)
+    # Front Leg (Right side)
+    sg.fill_rectangle(x + unit * 4, y + unit + head_h + body_h, leg_w, leg_h)
+    
+    # 8. Draw Tail (on the left side of the body)
+    sg.fill_rectangle(x - tail_w + unit * 0.5, y + unit + head_h + unit * 0.5, tail_w, tail_h) 
+
 def draw_picture(width, height):
     """Draws a static picture."""
 
@@ -66,6 +166,14 @@ def draw_picture(width, height):
     #Sun
     sg.set_fill_color ("yellow")
     sg.fill_circle(600, 0, 100)
+    
+    #Person
+    draw_blocky_person (560, 230, 50, "blue")
+    draw_blocky_person (200, 230, 50, "red")
+    
+    #Dog
+    draw_blocky_dog(150, 250, 30, "grey")
+    draw_blocky_dog(380, 250, 30, "white")
 
 if __name__ == "__main__":
     # Launch the wrapper; only edit starting dimensions of canvas if you would like to
