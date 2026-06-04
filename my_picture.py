@@ -212,6 +212,9 @@ def draw_picture(width, height):
     draw_blocky_person (560, 230, 50, "blue")
     draw_blocky_person (200, 230, 50, "red")
     
+    #House
+    draw_house(240, 200, "pink")
+    
     #Dog
     draw_blocky_dog(150, 250, 30, "grey")
     draw_blocky_dog(380, 250, 30, "white")
@@ -223,8 +226,7 @@ def draw_picture(width, height):
     draw_flower(60,360)
     draw_flower(300,350)
 
-    draw_house(240, 200, "pink")
-    
+    #Bird
     draw_bird(220, 80, "white")
 if __name__ == "__main__":
     # Launch the wrapper; only edit starting dimensions of canvas if you would like to
